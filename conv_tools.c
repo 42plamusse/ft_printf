@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 19:01:49 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/08 20:29:49 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/08 21:43:31 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int		conv_cs(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
 }
 
 
-int		conv_p(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
+int		conv_pt(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
 {
-	stock_p(va_arg(valist, void*), buf, sz, fwp);
+	stock_pt(va_arg(valist, void*), buf, sz, fwp);
 	return (CONV_SUCCED);
 }
