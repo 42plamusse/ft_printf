@@ -6,13 +6,13 @@
 #    By: plamusse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/18 15:07:40 by plamusse          #+#    #+#              #
-#    Updated: 2017/06/07 21:11:04 by plamusse         ###   ########.fr        #
+#    Updated: 2017/06/08 17:55:12 by plamusse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = testf
 
-SRC = main.c ft_printf.c 
+SRC = main.c ft_printf.c parser.c parsing_tools.c converter.c
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 

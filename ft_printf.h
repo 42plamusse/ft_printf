@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/07 20:21:52 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/08 20:21:53 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,48 +20,53 @@
 # include <stdio.h>
 
 # define BS 1
-
-int					ft_printf(const char *format, ...);
-
+# define NO_CONV 1
+# define CONV_SUCCED 1
 typedef struct		s_size
 {
 	int				no;
 	int				op;
 }					t_size;
 
+typedef struct		s_fwp
+{
+	int				fi;
+	int				fc;
+	int				wi;
+	int				pr;
+}					t_fwp;
+
 typedef enum		e_flags
 {
-	f_ha = 0X0001,//	00000000 00000001
-	f_ze = 0X0002,//	00000000 00000010
-	f_mi = 0X0004,//	00000000 00000100
-	f_pl = 0X0008,//	00000000 00001000
-	f_sp = 0X0010,//	00000000 00010000
-	m_fl = 0X001F,//	00000000 00011111
+	fl_ha = 0X01,//	00000001
+	fl_ze = 0X02,//	00000010
+	fl_mi = 0X04,//	00000100
+	fl_pl = 0X08,//	00001000
+	fl_sp = 0X10,//	00010000
+	//m_fl = 0X1F,//	00011111
 }					t_flags;
 
 typedef enum		e_conv
 {
-	f_h  = 0X0100,//	00000001 00000000
-	f_hh = 0X0200,//	00000010 00000000
-	f_l  = 0X0400,//	00000100 00000000
-	f_ll = 0X0800,//	00001000 00000000
-	f_j  = 0X1000,//	00010000 00000000
-	f_z  = 0X2000,//	00100000 00000000
-	m_cv = 0X3F00,//	00111111 00000000
+	fl_h  = 0X01,//	00000001
+	fl_hh = 0X02,//	00000010
+	fl_l  = 0X04,//	00000100
+	fl_ll = 0X08,//	00001000
+	fl_j  = 0X10,//	00010000
+	fl_z  = 0X20,//	00100000
+	//m_cv = 0X3F,//	00111111
 }					t_conv;
 
-//var = 0;
-//var |= f_ha
+int					ft_printf(const char *format, ...);
 
-// 00000001 00000000
-// 00000000 00000000
-// ------------------ |
-// 00000001 00000000
-//
-// 0000 0111 1110 0000
-//
-// >> 5
-// ------------------ &
-// 0000 0000 0000 0001
-// var
+int					parser(va_list valist, const char *format, char *buf, t_size *sz);
+
+void				init_fwp(t_fwp *fwp);
+
+void				iflags(char *p, t_fwp *fwp);
+
+void				cflag(char *p, t_fwp *fwp, const char *next);
+
+int					converter(va_list valist, char *buf, t_size *sz
+					, const char c, t_fwp *fwp);
 #endif
