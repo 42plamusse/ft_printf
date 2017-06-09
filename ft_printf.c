@@ -6,12 +6,11 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:17 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/08 13:43:09 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/09 17:14:50 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int		ft_printf(const char *format, ...)
 {
@@ -20,8 +19,7 @@ int		ft_printf(const char *format, ...)
 	t_size		sz;
 
 	va_start(valist, format);
-	sz.no = 0;
-	sz.op = 0;
+	init_size(&sz);
 	while (*format)
 	{
 		if (*format != '%' && sz.no < BS)
@@ -34,5 +32,5 @@ int		ft_printf(const char *format, ...)
 	va_end(valist);
 	if (write(1, buf, sz.no))
 		sz.op += sz.no;
-	return (sz.op);
+	return (sz.op - sz.uc);
 }

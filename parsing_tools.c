@@ -6,12 +6,11 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 13:28:29 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/08 17:48:54 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/09 16:01:01 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 void		init_fwp(t_fwp *fwp)
 {
@@ -47,12 +46,10 @@ void		iflags(char *p, t_fwp *fwp)
 
 void		cflag(char *p, t_fwp *fwp, const char *next)
 {
-	if (*p == 'h' && (fwp->fc |= fl_h))
-	{
-		if (*next == 'h' && (fwp->fc |= fl_hh))
-			;
+	if (*p == 'h' && *next == 'h' && (fwp->fc |= fl_hh))
 		return ;
-	}
+	else if (*p  == 'h' && !(fwp->fc & fl_hh) && (fwp->fc |= fl_h))
+		return ;
 	else if (*p == 'l' && (fwp->fc |= fl_l))
 	{
 		if (*next == 'l' && (fwp->fc |= fl_ll))

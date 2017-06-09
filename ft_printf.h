@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/08 20:21:53 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/09 17:20:55 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@
 
 # define BS 1
 # define NO_CONV 1
-# define CONV_SUCCED 1
+# define CONV_SUCCEED 1
+
 typedef struct		s_size
 {
 	int				no;
 	int				op;
+	int				uc;
 }					t_size;
 
 typedef struct		s_fwp
@@ -67,6 +69,28 @@ void				iflags(char *p, t_fwp *fwp);
 
 void				cflag(char *p, t_fwp *fwp, const char *next);
 
-int					converter(va_list valist, char *buf, t_size *sz
-					, const char c, t_fwp *fwp);
+int					converter(va_list valist, char *buf, t_size *sz, const char c, t_fwp *fwp);
+
+int					conv_cs(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp);
+
+void				stock_s(char *arg, char *buf, t_size *sz, t_fwp *fwp);
+
+void				stock_c(unsigned char arg, char *buf, t_size *sz);
+
+void				stock_S(wchar_t *arg, char *buf, t_size *sz, t_fwp *fwp);
+
+void				stock_C(wchar_t arg, char *buf, t_size *sz, t_fwp *fwp);
+
+void				idt_normls(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+
+void				idt_normlc(char arg, t_size *sz, char *buf);
+
+char				*ft_strchr(const char *s, int c);
+
+size_t				ft_strlen(const char *s);
+
+int					ft_isdigit(int c);
+
+void		init_size(t_size *sz);
+
 #endif
