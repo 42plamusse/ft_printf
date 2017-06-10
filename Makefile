@@ -6,7 +6,7 @@
 #    By: plamusse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/18 15:07:40 by plamusse          #+#    #+#              #
-#    Updated: 2017/06/09 17:15:04 by plamusse         ###   ########.fr        #
+#    Updated: 2017/06/10 02:13:29 by plamusse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,19 @@ SRC = main.c ft_printf.c parser.c parsing_tools.c converter.c conv_tools.c \
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
-CC = gcc -Wall -Werror -Wextra
+CC = gcc
+
+CFLAGS = -Wall -Werror -Wextra
 
 INCLUDE = -I./libft/includes
 
 all: $(NAME)
 
 $(NAME):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $(SRC)
+	gcc -o $(NAME) -g $(OBJ)
+
+noerr:
 	$(CC) $(INCLUDE) -c $(SRC)
 	gcc -o $(NAME) -g $(OBJ)
 
@@ -36,3 +42,4 @@ fclean: clean
 
 re: fclean all
 
+renoerr: fclean noer

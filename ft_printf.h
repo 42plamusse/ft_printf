@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/09 17:20:55 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/10 01:57:57 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,7 @@ int					ft_isdigit(int c);
 
 void		init_size(t_size *sz);
 
+void		idt_rights(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void		idt_zeros(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void		idt_lefts(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
 #endif

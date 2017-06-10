@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 21:42:49 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/09 17:42:17 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/10 02:10:46 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,29 @@
 void	stock_s(char *arg, char *buf, t_size *sz, t_fwp *fwp)
 {
 	int		len;
+	int		dif;
 
-	//if ((len = ft_strlen(arg)) && fwp->wi > len)
-	//{
-	//	if (fwp->fc & fl_mi)
-	//		idt_lefts(arg, len, sz, fwp, buf);
-	//	else if (fwp->fc & fl_ze)
-	//		idt_rzeros(arg, len, sz, fwp, buf);
-	//	else
-	//		idt_rights(arg, len, sz, fwp, buf);
-	//}
-	//else
-	len = ft_strlen(arg);
-	idt_normls(arg, len, sz, fwp, buf);
+	dif = fwp->wi - fwp->pr;
+	if ((len = ft_strlen(arg)) && dif < len)
+	{
+		if (fwp->fi & fl_mi)
+			idt_lefts(arg, len, sz, fwp, buf);
+		else if (fwp->fi & fl_ze)
+			idt_zeros(arg, len, sz, fwp, buf);
+		else
+			idt_rights(arg, len, sz, fwp, buf);
+	}
+	else
+		idt_normls(arg, len, sz, fwp, buf);
 }
 
 void	stock_c(unsigned char arg, char *buf, t_size *sz)
 {
 	//if ((len = ft_strlen(arg)) && fwp->wi > len)
 	//{
-	//	if (fwp->fc & fl_mi)
+	//	if (fwp->fi & fl_mi)
 	//		idt_leftc(arg, len, sz, fwp, buf);
-	//	else if (fwp->fc & fl_ze)
+	//	else if (fwp->fi & fl_ze)
 	//		idt_rzeroc(arg, len, sz, fwp, buf);
 	//	else
 	//		idt_rightc(arg, len, sz, fwp, buf);
