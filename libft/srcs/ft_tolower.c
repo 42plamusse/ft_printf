@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 13:51:44 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:33:32 by plamusse         ###   ########.fr       */
+/*   Created: 2017/04/18 23:41:37 by plamusse          #+#    #+#             */
+/*   Updated: 2017/04/27 17:56:29 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(void)
+int		ft_tolower(int c)
 {
-	//ft_printf("age : %6.1s\n", "42");
-	//ft_printf("age : %02.2lld, classe : %6s\n");
-	//printf("output lenght perso  : %d\n", ft_printf("Hello%% World\n"));
-	//printf("output lenght perso  : %d\n", ft_printf("age : %-012ck\n", 'c'));
-	//printf("output lenght system : %d\n", printf("age : %-012.1ck\n", 'c'));
-	return (0);
+	if (c >= 65 && c <= 90)
+		return (c + 32);
+	return (c);
 }

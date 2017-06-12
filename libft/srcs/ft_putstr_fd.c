@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stocker.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 13:28:38 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/09 16:00:18 by plamusse         ###   ########.fr       */
+/*   Created: 2017/04/21 13:02:20 by plamusse          #+#    #+#             */
+/*   Updated: 2017/04/28 15:13:16 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.c"
+#include "libft.h"
 
+void	ft_putstr_fd(char const *s, int fd)
+{
+	size_t	len;
 
-void	stock_si(intmax_t arg, char *buf, t_size sz, t_fwp fwp)
-void	stock_us(uintmax_t arg, char *buf, char c, t_size sz, t_fwp fwp)
-void	stock_pt(intmax_t arg, char *buf, t_size sz, t_fwp fwp)
+	len = 0;
+	if (s)
+	{
+		while (s[len])
+			len++;
+		write(fd, s, len);
+	}
+}

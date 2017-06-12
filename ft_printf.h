@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/10 01:57:57 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/12 15:29:56 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef enum		e_flags
 	fl_mi = 0X04,//	00000100
 	fl_pl = 0X08,//	00001000
 	fl_sp = 0X10,//	00010000
+	fl_ne = 0X20,
+	fl_pr = 0X40,
 	//m_fl = 0X1F,//	00011111
 }					t_flags;
 
@@ -75,7 +77,7 @@ int					conv_cs(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp);
 
 void				stock_s(char *arg, char *buf, t_size *sz, t_fwp *fwp);
 
-void				stock_c(unsigned char arg, char *buf, t_size *sz);
+void				stock_c(unsigned char arg, char *buf, t_size *sz, t_fwp *fwp);
 
 void				stock_S(wchar_t *arg, char *buf, t_size *sz, t_fwp *fwp);
 
@@ -96,4 +98,9 @@ void		init_size(t_size *sz);
 void		idt_rights(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
 void		idt_zeros(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
 void		idt_lefts(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void		fill_ze(char *buf, t_size *sz, int nsp);
+void		fill_sp(char *buf, t_size *sz, int nsp);
+void		idt_rightc(char arg, t_size *sz, t_fwp *fwp, char *buf);
+void		idt_zeroc(char arg, t_size *sz, t_fwp *fwp, char *buf);
+void		idt_leftc(char arg, t_size *sz, t_fwp *fwp, char *buf);
 #endif

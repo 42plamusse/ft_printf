@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 13:26:12 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/10 01:54:04 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/12 15:29:19 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		parser(va_list valist, const char *format, char *buf, t_size *sz)
 		iflags(p, &fwp);
 	while (format[i] && ft_isdigit(format[i]))
 		fwp.wi = fwp.wi * 10 + (format[i++] - '0');
-	if (format[i] && format[i] == '.' && ++i)
+	if (format[i] && format[i] == '.' && (fwp.fi | fl_pr) && ++i)
 	{
 		while (format[i] && ft_isdigit(format[i]))
 			fwp.pr = fwp.pr * 10 + (format[i++] - '0');

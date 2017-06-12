@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers.c                                          :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/09 15:57:05 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:46:39 by plamusse         ###   ########.fr       */
+/*   Created: 2017/06/12 15:44:24 by plamusse          #+#    #+#             */
+/*   Updated: 2017/06/12 15:45:56 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.a"
 
-void		init_size(t_size *sz)
+ssize_t		ft_abs(ssize_t n)
 {
-	sz->no = 0;
-	sz->op = 0;
-	sz->uc = 0;
+	return ((n < 0) ? -n : n);
 }

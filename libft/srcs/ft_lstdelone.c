@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 13:51:44 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:33:32 by plamusse         ###   ########.fr       */
+/*   Created: 2017/04/26 20:32:28 by plamusse          #+#    #+#             */
+/*   Updated: 2017/04/27 11:48:52 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(void)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	//ft_printf("age : %6.1s\n", "42");
-	//ft_printf("age : %02.2lld, classe : %6s\n");
-	//printf("output lenght perso  : %d\n", ft_printf("Hello%% World\n"));
-	//printf("output lenght perso  : %d\n", ft_printf("age : %-012ck\n", 'c'));
-	//printf("output lenght system : %d\n", printf("age : %-012.1ck\n", 'c'));
-	return (0);
+	t_list	*elem;
+	t_list	*tmp;
+
+	elem = *alst;
+	tmp = elem;
+	del(elem->content, elem->content_size);
+	elem = elem->next;
+	free(tmp);
+	*alst = NULL;
 }

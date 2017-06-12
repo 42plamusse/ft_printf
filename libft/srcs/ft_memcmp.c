@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 13:51:44 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:33:32 by plamusse         ###   ########.fr       */
+/*   Created: 2017/04/15 17:45:52 by plamusse          #+#    #+#             */
+/*   Updated: 2017/04/28 15:10:08 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(void)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	//ft_printf("age : %6.1s\n", "42");
-	//ft_printf("age : %02.2lld, classe : %6s\n");
-	//printf("output lenght perso  : %d\n", ft_printf("Hello%% World\n"));
-	//printf("output lenght perso  : %d\n", ft_printf("age : %-012ck\n", 'c'));
-	//printf("output lenght system : %d\n", printf("age : %-012.1ck\n", 'c'));
+	size_t			i;
+	unsigned char	*tmp1;
+	unsigned char	*tmp2;
+
+	if (n)
+	{
+		i = 0;
+		tmp1 = (unsigned char*)s1;
+		tmp2 = (unsigned char*)s2;
+		while (tmp1[i] == tmp2[i] && i < n - 1)
+			i++;
+		if (tmp1[i] != tmp2[i] && n > 0)
+			return (tmp1[i] - tmp2[i]);
+	}
 	return (0);
 }

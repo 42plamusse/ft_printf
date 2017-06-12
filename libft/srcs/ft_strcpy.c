@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 13:51:44 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:33:32 by plamusse         ###   ########.fr       */
+/*   Created: 2017/04/11 19:17:34 by plamusse          #+#    #+#             */
+/*   Updated: 2017/04/20 12:22:34 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(void)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	//ft_printf("age : %6.1s\n", "42");
-	//ft_printf("age : %02.2lld, classe : %6s\n");
-	//printf("output lenght perso  : %d\n", ft_printf("Hello%% World\n"));
-	//printf("output lenght perso  : %d\n", ft_printf("age : %-012ck\n", 'c'));
-	//printf("output lenght system : %d\n", printf("age : %-012.1ck\n", 'c'));
-	return (0);
+	int		i;
+
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }

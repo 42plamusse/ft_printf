@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 13:51:44 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:33:32 by plamusse         ###   ########.fr       */
+/*   Created: 2017/04/18 22:10:31 by plamusse          #+#    #+#             */
+/*   Updated: 2017/04/20 12:26:36 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(void)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	//ft_printf("age : %6.1s\n", "42");
-	//ft_printf("age : %02.2lld, classe : %6s\n");
-	//printf("output lenght perso  : %d\n", ft_printf("Hello%% World\n"));
-	//printf("output lenght perso  : %d\n", ft_printf("age : %-012ck\n", 'c'));
-	//printf("output lenght system : %d\n", printf("age : %-012.1ck\n", 'c'));
+	size_t	i;
+	size_t	j;
+	size_t	size;
+	char	*tmp;
+
+	i = 0;
+	size = ft_strlen(little);
+	tmp = (char*)big;
+	while (tmp[i] && i < len)
+	{
+		j = 0;
+		while (tmp[i] && i < len && tmp[i] == little[j])
+		{
+			i++;
+			j++;
+		}
+		if (j == size)
+			return (&tmp[i - j]);
+		else
+			i = i - j;
+		i++;
+	}
 	return (0);
 }

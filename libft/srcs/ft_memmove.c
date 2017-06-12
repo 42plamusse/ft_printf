@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 13:51:44 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:33:32 by plamusse         ###   ########.fr       */
+/*   Created: 2017/04/15 00:21:08 by plamusse          #+#    #+#             */
+/*   Updated: 2017/04/21 11:08:52 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(void)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	//ft_printf("age : %6.1s\n", "42");
-	//ft_printf("age : %02.2lld, classe : %6s\n");
-	//printf("output lenght perso  : %d\n", ft_printf("Hello%% World\n"));
-	//printf("output lenght perso  : %d\n", ft_printf("age : %-012ck\n", 'c'));
-	//printf("output lenght system : %d\n", printf("age : %-012.1ck\n", 'c'));
-	return (0);
+	size_t			i;
+	size_t			j;
+	unsigned char	*tmp1;
+	unsigned char	*tmp2;
+
+	tmp1 = (unsigned char*)dst;
+	tmp2 = (unsigned char*)src;
+	i = 0;
+	j = len - 1;
+	if (dst < src)
+	{
+		return (ft_memcpy(dst, src, len));
+	}
+	else
+	{
+		while (i < len)
+		{
+			tmp1[j] = tmp2[j];
+			i++;
+			j--;
+		}
+	}
+	dst = (void*)tmp1;
+	return (dst);
 }

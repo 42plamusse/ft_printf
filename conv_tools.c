@@ -6,31 +6,31 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 19:01:49 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/09 17:42:02 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/12 15:31:47 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-//int		conv_si(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
-//{
-//	if ((fwp->fc & fl_z))
-//		stock_si(va_arg(valist, size_t), buf, sz, fwp);
-//	else if ((fwp->fc & fl_j))
-//		stock_si(va_arg(valist, intmax_t), buf, sz, fwp);
-//	else if ((fwp->fc & fl_ll))
-//		stock_si(va_arg(valist, long long), buf, sz, fwp);
-//	else if (((fwp->fc & fl_l)) || c == 'D')
-//		stock_si(va_arg(valist, long), buf, sz, fwp);
-//	else if ((fwp->fc & fl_h))
-//		stock_si(va_arg(valist, short), buf, sz, fwp);
-//	else if ((fwp->fc & fl_hh))
-//		stock_si(va_arg(valist, int), buf, sz, fwp);
-//	else
-//		stock_si(va_arg(valist, int), buf, sz, fwp);
-//	return (CONV_SUCCEED);
-//}
-//
+int		conv_si(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
+{
+	if ((fwp->fc & fl_z))
+		stock_si(va_arg(valist, size_t), buf, sz, fwp);
+	else if ((fwp->fc & fl_j))
+		stock_si(va_arg(valist, intmax_t), buf, sz, fwp);
+	else if ((fwp->fc & fl_ll))
+		stock_si(va_arg(valist, long long), buf, sz, fwp);
+	else if (((fwp->fc & fl_l)) || c == 'D')
+		stock_si(va_arg(valist, long), buf, sz, fwp);
+	else if ((fwp->fc & fl_h))
+		stock_si(va_arg(valist, int), buf, sz, fwp);
+	else if ((fwp->fc & fl_hh))
+		stock_si(va_arg(valist, int), buf, sz, fwp);
+	else
+		stock_si(va_arg(valist, int), buf, sz, fwp);
+	return (CONV_SUCCEED);
+}
+
 //int		conv_us(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
 //{
 //	if ((fwp->fc & fl_z))
@@ -70,7 +70,7 @@ int		conv_cs(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
 		//	stock_C(va_arg(valist, wchar_t), buf, sz, fwp);
 		}
 		else
-			stock_c(va_arg(valist, int), buf, sz);
+			stock_c(va_arg(valist, int), buf, sz, fwp);
 	}
 	return (CONV_SUCCEED);
 }

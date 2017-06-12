@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers.c                                          :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/09 15:57:05 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:46:39 by plamusse         ###   ########.fr       */
+/*   Created: 2017/06/12 15:34:55 by plamusse          #+#    #+#             */
+/*   Updated: 2017/06/12 15:41:55 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void		init_size(t_size *sz)
+size_t		intlen(size_t n)
 {
-	sz->no = 0;
-	sz->op = 0;
-	sz->uc = 0;
+	size_t		len;
+
+	len = 0;
+	while (n)
+	{
+		n /= 10;
+		len++;
+	}
+	if (n < 0)
+		len++;
+	return (len);
 }

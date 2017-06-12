@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 21:42:49 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/10 02:10:46 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/11 22:53:08 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ void	stock_s(char *arg, char *buf, t_size *sz, t_fwp *fwp)
 		idt_normls(arg, len, sz, fwp, buf);
 }
 
-void	stock_c(unsigned char arg, char *buf, t_size *sz)
+void	stock_c(unsigned char arg, char *buf, t_size *sz , t_fwp *fwp)
 {
-	//if ((len = ft_strlen(arg)) && fwp->wi > len)
-	//{
-	//	if (fwp->fi & fl_mi)
-	//		idt_leftc(arg, len, sz, fwp, buf);
-	//	else if (fwp->fi & fl_ze)
-	//		idt_rzeroc(arg, len, sz, fwp, buf);
-	//	else
-	//		idt_rightc(arg, len, sz, fwp, buf);
-	//}
-	//else
+	if (fwp->wi)
+	{
+		if (fwp->fi & fl_mi)
+			idt_leftc(arg, sz, fwp, buf);
+		else if (fwp->fi & fl_ze)
+			idt_zeroc(arg, sz, fwp, buf);
+		else
+			idt_rightc(arg, sz, fwp, buf);
+	}
+	else
 	idt_normlc(arg, sz, buf);
 }
 

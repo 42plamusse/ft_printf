@@ -6,14 +6,15 @@
 #    By: plamusse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/18 15:07:40 by plamusse          #+#    #+#              #
-#    Updated: 2017/06/10 02:13:29 by plamusse         ###   ########.fr        #
+#    Updated: 2017/06/12 15:32:23 by plamusse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = testf
 
 SRC = main.c ft_printf.c parser.c parsing_tools.c converter.c conv_tools.c \
-	  stocker_cs.c indent_string.c indent_char.c helpers.c
+	  stocker_cs.c indent_string.c indent_char.c helpers.c indent_tools.c \
+	  stocker_signed.c
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
@@ -26,8 +27,10 @@ INCLUDE = -I./libft/includes
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) $(INCLUDE) -c $(SRC)
-	gcc -o $(NAME) -g $(OBJ)
+	@(cd ./libft/ && $(MAKE))
+	$(CC) $(INCLUDE) -c $(SRC)
+	gcc -o $(NAME) -g $(OBJ) -L libft/ -lft
+	@(cd ./libft/ && $(MAKE) fclean)
 
 noerr:
 	$(CC) $(INCLUDE) -c $(SRC)
