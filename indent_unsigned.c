@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   indent_signed.c                                    :+:      :+:    :+:   */
+/*   indent_unsigned.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/12 10:48:57 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 17:54:43 by plamusse         ###   ########.fr       */
+/*   Created: 2017/06/13 17:39:28 by plamusse          #+#    #+#             */
+/*   Updated: 2017/06/13 17:48:54 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void		idt_leftsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_leftus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;
 
-	if (((fwp->fi & fl_pl) || (fwp->fi & fl_sp) || (fwp->fi & fl_ne)))
-		putsign(sz, fwp, buf);
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
 	stock = itoa_deci(ft_abs(arg), df->al);
@@ -35,15 +33,13 @@ void		idt_leftsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 	fill_sp(buf, sz, df->wl);
 }
 
-void		idt_zerosi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_zerous(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;
 
 	if (df->pl)
 		fill_sp(buf, sz, df->wl);
-	if (((fwp->fi & fl_pl) || (fwp->fi & fl_sp) || (fwp->fi & fl_ne)))
-		putsign(sz, fwp, buf);
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
 	else
@@ -60,14 +56,13 @@ void		idt_zerosi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 	free(stock);
 }
 
-void		idt_rightsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+
+void		idt_rightus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;
 
 	fill_sp(buf, sz, df->wl);
-	if (((fwp->fi & fl_pl) || (fwp->fi & fl_sp) || (fwp->fi & fl_ne)))
-		putsign(sz, fwp, buf);
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
 	stock = itoa_deci(ft_abs(arg), df->al);
@@ -82,13 +77,11 @@ void		idt_rightsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 	free(stock);
 }
 
-void		idt_normlsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_normlus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;
 
-	if (((fwp->fi & fl_pl) || (fwp->fi & fl_sp) || (fwp->fi & fl_ne)))
-		putsign(sz, fwp, buf);
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
 	stock = itoa_deci(ft_abs(arg), df->al);

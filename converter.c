@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 17:12:21 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 17:33:39 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 17:42:17 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	converter(va_list valist, char *buf, t_size *sz, const char c, t_fwp *fwp)
 	else if ((p = ft_strchr("oOuUxX", c))
 			&& conv_oux(valist, buf, sz, *p, fwp))
 		return (1);
-	else 
 	else if ((p = ft_strchr("sScC", c)) && conv_cs(valist, buf, sz, *p, fwp))
 		return (1);
 //	else if (c == 'p' && conv_pt(valist, buf, sz, *p, fwp))

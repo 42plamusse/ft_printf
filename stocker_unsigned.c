@@ -6,13 +6,13 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 11:07:01 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 17:34:09 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 17:51:31 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t		arglen_si(size_t arg)
+size_t		arglen_us(size_t arg)
 {
 	int		len;
 
@@ -24,18 +24,14 @@ size_t		arglen_si(size_t arg)
 	return (len);
 }
 
-void		init_df_si(t_dif *df, size_t arg, t_fwp *fwp)
+void		init_df_us(t_dif *df, size_t arg, t_fwp *fwp)
 {
-	int		sign;
 	int		totlen;
 
 	df->al = arglen_us(arg);
-	if (!(sign = 0) && ((arg < 0 && (fwp->fi |= fl_ne)) || (fwp->fi & fl_pl)
-			|| (fwp->fi & fl_sp)))
-		sign = 1;
-	if (fwp->pr > df->al && (totlen = fwp->pr + sign))
+	if (fwp->pr > df->al && (totlen = fwp->pr))
 		df->pl = fwp->pr - df->al;
-	else if ((totlen = df->al + sign))
+	else if ((totlen = df->al))
 		df->pl = 0;
 	if (fwp->wi > totlen)
 		df->wl = fwp->wi - totlen;
@@ -43,7 +39,7 @@ void		init_df_si(t_dif *df, size_t arg, t_fwp *fwp)
 		df->wl = 0;
 }
 
-void		stock_si(size_t arg, char *buf, t_size *sz, t_fwp *fwp)
+void		stock_us(size_t arg, char *buf, t_size *sz, t_fwp *fwp)
 {
 	t_dif	df;
 
