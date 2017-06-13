@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 18:39:35 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 18:41:13 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 21:17:35 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ size_t		arglen_hx(size_t arg)
 void		init_df_hx(t_dif *df, size_t arg, t_fwp *fwp)
 {
 	int		totlen;
+	int		pref;
 
+	if (!(pref = 0) && (fwp->fi & fl_ha))
+		pref = 2;
 	df->al = arglen_hx(arg);
-	if (fwp->pr > df->al && (totlen = fwp->pr))
+	if (fwp->pr > (df->al + pref) && (totlen = fwp->pr))
 		df->pl = fwp->pr - df->al;
-	else if ((totlen = df->al))
+	else if ((totlen = df->al + pref))
 		df->pl = 0;
 	if (fwp->wi > totlen)
 		df->wl = fwp->wi - totlen;

@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 19:09:27 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 20:56:57 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void				stock_cap_hx(size_t arg, char *buf, t_size *sz, t_fwp *fwp);
 void				fill_ze(char *buf, t_size *sz, int nsp);
 void				fill_sp(char *buf, t_size *sz, int nsp);
 void				putsign(t_size *sz, t_fwp *fwp, char *buf);
+void				put_hex_prfx(char *buf, t_size *sz, int cap);
 char				*itoa_deci(size_t arg, int len);
 char				*itoa_octa(size_t arg, int len);
 char				*itoa_hexa(size_t arg, int len);

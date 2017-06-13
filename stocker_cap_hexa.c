@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 18:39:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 18:42:54 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 20:59:39 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ size_t		arglen_cap_hx(size_t arg)
 void		init_df_cap_hx(t_dif *df, size_t arg, t_fwp *fwp)
 {
 	int		totlen;
+	int		pref;
 
-	df->al = arglen_cap_hx(arg);
+	if (!(pref = 0) && (fwp->fi & fl_ha))
+		pref = 2;
+	df->al = arglen_cap_hx(arg) + pref;
 	if (fwp->pr > df->al && (totlen = fwp->pr))
 		df->pl = fwp->pr - df->al;
 	else if ((totlen = df->al))
