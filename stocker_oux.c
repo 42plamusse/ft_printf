@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   converter.c                                        :+:      :+:    :+:   */
+/*   stocker_oux.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 17:12:21 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 17:33:39 by plamusse         ###   ########.fr       */
+/*   Created: 2017/06/13 17:19:48 by plamusse          #+#    #+#             */
+/*   Updated: 2017/06/13 17:33:57 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-int	converter(va_list valist, char *buf, t_size *sz, const char c, t_fwp *fwp)
+void		stock_oux(ssize_t arg, char *buf, char c, t_size *sz, t_fwp *fwp)
 {
-	char	*p;
-
-	if ((p = ft_strchr("dDi", c)) && conv_si(valist, buf, sz, *p, fwp))
-		return (1);
-	else if ((p = ft_strchr("oOuUxX", c))
-			&& conv_oux(valist, buf, sz, *p, fwp))
-		return (1);
-	else 
-	else if ((p = ft_strchr("sScC", c)) && conv_cs(valist, buf, sz, *p, fwp))
-		return (1);
-//	else if (c == 'p' && conv_pt(valist, buf, sz, *p, fwp))
-//		return (1);
-	return (0);
+	//if (c == 'o' || c == 'O')
+	//	stock_oc(arg, buf, sz, fwp);
+	//else if (c == 'u' || c == 'U')
+		stock_us(arg, buf, sz, fwp);
+	//else if (c == 'x')
+	//	stock_hx(arg, buf, sz, fwp);
+	//else if (c == 'X')
+	//	stock_cap_hx(arg, buf, sz, fwp);
 }

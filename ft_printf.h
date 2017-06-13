@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 13:46:48 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 17:14:54 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ typedef struct		s_fwp
 	int				wi;
 	int				pr;
 }					t_fwp;
+
+typedef struct		s_dif
+{
+	int				al;
+	int				pl;
+	int				wl;
+}					t_dif;
 /*
 ** enums
 */
@@ -92,18 +99,22 @@ void				stock_S(wchar_t *arg, char *buf, t_size *sz, t_fwp *fwp);
 void				stock_C(wchar_t arg, char *buf, t_size *sz, t_fwp *fwp);
 void				stock_si(ssize_t arg, char *buf, t_size *sz, t_fwp *fwp);
 /*
-** signed
+** indentation
 */
 void				fill_ze(char *buf, t_size *sz, int nsp);
 void				fill_sp(char *buf, t_size *sz, int nsp);
 void				putsign(t_size *sz, t_fwp *fwp, char *buf);
+char				*itoa_deci(size_t arg, int len);
 void				idt_normls(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_normlc(char arg, t_size *sz, char *buf);
-void				idt_normlsi(ssize_t arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_normlsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_rights(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_rightc(char arg, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_rightsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_zeros(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_zeroc(char arg, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_zerosi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_lefts(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_leftc(char arg, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_leftsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
 #endif

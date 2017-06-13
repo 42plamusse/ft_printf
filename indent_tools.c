@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/11 22:02:15 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 13:58:11 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 14:11:05 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void		putsign(t_size *sz, t_fwp *fwp, char *buf)
 {
 	if (sz->no >= BS && (sz->op += sz->no) && !(sz->no = 0))
 		write(1, buf, BS);
-	if (fwp->fi & fl_pl)
+	if (fwp->fi & fl_ne)
+		buf[sz->no++] = '-';
+	else if (fwp->fi & fl_pl)
 		buf[sz->no++] = '+';
 	else if (fwp->fi & fl_sp)
 		buf[sz->no++] = ' ';
-	else if (fwp->fi & fl_ne)
-		buf[sz->no++] = '-';
 }
 

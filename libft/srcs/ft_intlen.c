@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 15:34:55 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 13:57:48 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 14:22:54 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ ssize_t		ft_intlen(ssize_t n)
 	int		len;
 
 	len = 0;
+	if (n < 0)
+		len++;
 	while (n)
 	{
 		n /= 10;
 		len++;
 	}
-	if (n < 0)
-		len++;
 	return (len);
 }
