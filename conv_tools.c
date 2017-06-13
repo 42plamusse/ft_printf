@@ -6,11 +6,12 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 19:01:49 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:31:47 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 13:38:15 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 int		conv_si(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
 {

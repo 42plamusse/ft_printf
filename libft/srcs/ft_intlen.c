@@ -6,15 +6,15 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 15:34:55 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:41:55 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 13:57:48 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		intlen(size_t n)
+ssize_t		ft_intlen(ssize_t n)
 {
-	size_t		len;
+	int		len;
 
 	len = 0;
 	while (n)

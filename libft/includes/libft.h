@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 08:35:25 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:43:01 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 13:41:29 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 
 char				*ft_itoa(int n);
+
+ssize_t				ft_abs(ssize_t n);
 
 ssize_t				ft_intlen(ssize_t n);
 

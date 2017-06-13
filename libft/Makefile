@@ -6,14 +6,16 @@
 #    By: plamusse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/11 19:47:30 by plamusse          #+#    #+#              #
-#    Updated: 2017/05/18 18:05:55 by plamusse         ###   ########.fr        #
+#    Updated: 2017/06/13 13:47:38 by plamusse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC_LIST = ft_atoi.c \
+SRC_LIST = ft_abs.c \
+		   ft_atoi.c \
 		ft_bzero.c \
+		ft_intlen.c \
 		ft_isalnum.c \
 		ft_isalpha.c \
 		ft_isascii.c \

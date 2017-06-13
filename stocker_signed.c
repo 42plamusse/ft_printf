@@ -6,11 +6,12 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 11:05:59 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:49:25 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 13:43:37 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 void	stock_si(ssize_t arg, char *buf, t_size *sz, t_fwp *fwp)
 {

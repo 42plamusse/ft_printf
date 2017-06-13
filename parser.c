@@ -6,11 +6,12 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 13:26:12 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:29:19 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 13:38:34 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 int		parser(va_list valist, const char *format, char *buf, t_size *sz)
 {

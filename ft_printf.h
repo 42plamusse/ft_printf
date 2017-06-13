@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/12 15:29:56 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/13 13:46:48 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define NO_CONV 1
 # define CONV_SUCCEED 1
 
+/*
+** structs
+*/
 typedef struct		s_size
 {
 	int				no;
@@ -37,7 +40,9 @@ typedef struct		s_fwp
 	int				wi;
 	int				pr;
 }					t_fwp;
-
+/*
+** enums
+*/
 typedef enum		e_flags
 {
 	fl_ha = 0X01,//	00000001
@@ -60,47 +65,45 @@ typedef enum		e_conv
 	fl_z  = 0X20,//	00100000
 	//m_cv = 0X3F,//	00111111
 }					t_conv;
-
+/*
+** prototypes
+*/
 int					ft_printf(const char *format, ...);
-
-int					parser(va_list valist, const char *format, char *buf, t_size *sz);
-
+void				init_size(t_size *sz);
+/*
+** parsing
+*/
 void				init_fwp(t_fwp *fwp);
-
+int					parser(va_list valist, const char *format, char *buf, t_size *sz);
 void				iflags(char *p, t_fwp *fwp);
-
 void				cflag(char *p, t_fwp *fwp, const char *next);
-
+/*
+** conversion
+*/
 int					converter(va_list valist, char *buf, t_size *sz, const char c, t_fwp *fwp);
-
 int					conv_cs(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp);
-
+int					conv_si(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp);
+/*
+** stock
+*/
 void				stock_s(char *arg, char *buf, t_size *sz, t_fwp *fwp);
-
 void				stock_c(unsigned char arg, char *buf, t_size *sz, t_fwp *fwp);
-
 void				stock_S(wchar_t *arg, char *buf, t_size *sz, t_fwp *fwp);
-
 void				stock_C(wchar_t arg, char *buf, t_size *sz, t_fwp *fwp);
-
+void				stock_si(ssize_t arg, char *buf, t_size *sz, t_fwp *fwp);
+/*
+** signed
+*/
+void				fill_ze(char *buf, t_size *sz, int nsp);
+void				fill_sp(char *buf, t_size *sz, int nsp);
+void				putsign(t_size *sz, t_fwp *fwp, char *buf);
 void				idt_normls(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
-
 void				idt_normlc(char arg, t_size *sz, char *buf);
-
-char				*ft_strchr(const char *s, int c);
-
-size_t				ft_strlen(const char *s);
-
-int					ft_isdigit(int c);
-
-void		init_size(t_size *sz);
-
-void		idt_rights(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
-void		idt_zeros(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
-void		idt_lefts(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
-void		fill_ze(char *buf, t_size *sz, int nsp);
-void		fill_sp(char *buf, t_size *sz, int nsp);
-void		idt_rightc(char arg, t_size *sz, t_fwp *fwp, char *buf);
-void		idt_zeroc(char arg, t_size *sz, t_fwp *fwp, char *buf);
-void		idt_leftc(char arg, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_normlsi(ssize_t arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_rights(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_rightc(char arg, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_zeros(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_zeroc(char arg, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_lefts(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_leftc(char arg, t_size *sz, t_fwp *fwp, char *buf);
 #endif

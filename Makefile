@@ -6,7 +6,7 @@
 #    By: plamusse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/18 15:07:40 by plamusse          #+#    #+#              #
-#    Updated: 2017/06/12 15:32:23 by plamusse         ###   ########.fr        #
+#    Updated: 2017/06/13 13:48:34 by plamusse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = testf
 
 SRC = main.c ft_printf.c parser.c parsing_tools.c converter.c conv_tools.c \
 	  stocker_cs.c indent_string.c indent_char.c helpers.c indent_tools.c \
-	  stocker_signed.c
+	  stocker_signed.c indent_signed.c
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
@@ -42,6 +42,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -rf $(NAME).dSYM
+	@(cd ./libft/ && $(MAKE) fclean)
 
 re: fclean all
 
