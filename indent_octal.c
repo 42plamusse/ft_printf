@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   indent_unsigned.c                                  :+:      :+:    :+:   */
+/*   indent_octal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/13 17:39:28 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 18:30:42 by plamusse         ###   ########.fr       */
+/*   Created: 2017/06/13 18:16:15 by plamusse          #+#    #+#             */
+/*   Updated: 2017/06/13 18:17:46 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void		idt_leftus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_leftoc(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;
 
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
-	stock = itoa_deci(ft_abs(arg), df->al);
+	stock = itoa_octa(ft_abs(arg), df->al);
 	i = 0;
 	while (stock[i])
 	{
@@ -33,7 +33,7 @@ void		idt_leftus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 	fill_sp(buf, sz, df->wl);
 }
 
-void		idt_zerous(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_zerooc(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;
@@ -44,7 +44,7 @@ void		idt_zerous(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 		fill_ze(buf, sz, df->pl);
 	else
 		fill_ze(buf, sz, df->wl);
-	stock = itoa_deci(ft_abs(arg), df->al);
+	stock = itoa_octa(ft_abs(arg), df->al);
 	i = 0;
 	while (stock[i])
 	{
@@ -57,7 +57,7 @@ void		idt_zerous(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 }
 
 
-void		idt_rightus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_rightoc(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;
@@ -65,7 +65,7 @@ void		idt_rightus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 	fill_sp(buf, sz, df->wl);
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
-	stock = itoa_deci(ft_abs(arg), df->al);
+	stock = itoa_octa(ft_abs(arg), df->al);
 	i = 0;
 	while (stock[i])
 	{
@@ -77,14 +77,14 @@ void		idt_rightus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 	free(stock);
 }
 
-void		idt_normlus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_normloc(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;
 
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
-	stock = itoa_deci(ft_abs(arg), df->al);
+	stock = itoa_octa(ft_abs(arg), df->al);
 	i = 0;
 	while (stock[i])
 	{
