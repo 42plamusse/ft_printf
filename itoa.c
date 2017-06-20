@@ -6,21 +6,23 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 17:13:17 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/20 14:03:50 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 15:58:15 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*itoa_deci(size_t arg, int len)
+char		*itoa_deci(ssize_t arg, int len)
 {
 	char	*ret;
 
+	printf("%lld\n", arg);
 	if (!(ret = (char*)malloc(sizeof(char) * len)))
 		return (NULL);
+	if (arg == 
 	while (len)
 	{
-		ret[--len] = arg % 10 + '0';
+		ret[--len] = ft_abs(arg % 10) + '0';
 		arg /= 10;
 	}
 	return (ret);

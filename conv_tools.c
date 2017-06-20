@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 19:01:49 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/14 12:27:04 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 14:49:03 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int		conv_si(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
 	else if (((fwp->fc & fl_l)) || c == 'D')
 		stock_si(va_arg(valist, long), buf, sz, fwp);
 	else if ((fwp->fc & fl_h))
-		stock_si(va_arg(valist, int), buf, sz, fwp);
+		stock_si((short)va_arg(valist, int), buf, sz, fwp);
 	else if ((fwp->fc & fl_hh))
-		stock_si(va_arg(valist, int), buf, sz, fwp);
+		stock_si((signed char)va_arg(valist, int), buf, sz, fwp);
 	else
 		stock_si(va_arg(valist, int), buf, sz, fwp);
 	return (CONV_SUCCEED);
@@ -42,9 +42,9 @@ int		conv_oux(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
 	else if (((fwp->fc & fl_l)) || ft_strchr("OU", c))
 		stock_oux(va_arg(valist, unsigned long), buf, c, sz, fwp);
 	else if ((fwp->fc & fl_h))
-		stock_oux(va_arg(valist, unsigned int), buf, c, sz, fwp);
+		stock_oux((unsigned short)va_arg(valist, unsigned int), buf, c, sz, fwp);
 	else if ((fwp->fc & fl_hh))
-		stock_oux(va_arg(valist, unsigned int), buf, c, sz, fwp);
+		stock_oux((unsigned char)va_arg(valist, unsigned int), buf, c, sz, fwp);
 	else
 		stock_oux(va_arg(valist, unsigned int), buf, c, sz, fwp);
 	return (CONV_SUCCEED);

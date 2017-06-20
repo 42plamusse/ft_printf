@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 10:48:57 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/20 12:58:00 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 15:35:46 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void		idt_normlsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 		putsign(sz, fwp, buf);
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
-	stock = itoa_deci(ft_abs(arg), df->al);
+	stock = itoa_deci(arg, df->al);
 	i = 0;
 	while (stock[i])
 	{
