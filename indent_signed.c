@@ -6,13 +6,13 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 10:48:57 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/20 15:35:46 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 18:14:42 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		idt_leftsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_leftsi(long long arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;
@@ -21,7 +21,7 @@ void		idt_leftsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 		putsign(sz, fwp, buf);
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
-	stock = itoa_deci(ft_abs(arg), df->al);
+	stock = itoa_deci(arg, df->al);
 	i = 0;
 	while (stock[i])
 	{
@@ -34,7 +34,7 @@ void		idt_leftsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 	fill_sp(buf, sz, df->wl);
 }
 
-void		idt_zerosi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_zerosi(long long arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;
@@ -47,7 +47,7 @@ void		idt_zerosi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 		fill_ze(buf, sz, df->pl);
 	else
 		fill_ze(buf, sz, df->wl);
-	stock = itoa_deci(ft_abs(arg), df->al);
+	stock = itoa_deci(arg, df->al);
 	i = 0;
 	while (stock[i])
 	{
@@ -59,7 +59,7 @@ void		idt_zerosi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 	free(stock);
 }
 
-void		idt_rightsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_rightsi(long long arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;
@@ -69,7 +69,7 @@ void		idt_rightsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 		putsign(sz, fwp, buf);
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
-	stock = itoa_deci(ft_abs(arg), df->al);
+	stock = itoa_deci(arg, df->al);
 	i = 0;
 	while (stock[i])
 	{
@@ -81,7 +81,7 @@ void		idt_rightsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 	free(stock);
 }
 
-void		idt_normlsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_normlsi(long long arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {
 	char	*stock;
 	int		i;

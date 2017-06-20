@@ -6,13 +6,13 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 11:05:59 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/20 12:55:05 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 18:06:50 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ssize_t		arglen_si(ssize_t arg)
+ssize_t		arglen_si(long long arg)
 {
 	int		len;
 
@@ -24,7 +24,7 @@ ssize_t		arglen_si(ssize_t arg)
 	return (len);
 }
 
-void		init_df_si(t_dif *df, ssize_t arg, t_fwp *fwp)
+void		init_df_si(t_dif *df, long long arg, t_fwp *fwp)
 {
 	int		sign;
 	int		totlen;
@@ -46,7 +46,7 @@ void		init_df_si(t_dif *df, ssize_t arg, t_fwp *fwp)
 		df->wl = 0;
 }
 
-void		stock_si(ssize_t arg, char *buf, t_size *sz, t_fwp *fwp)
+void		stock_si(long long arg, char *buf, t_size *sz, t_fwp *fwp)
 {
 	t_dif	df;
 

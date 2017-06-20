@@ -6,20 +6,34 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 17:13:17 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/20 15:58:15 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 21:21:36 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*itoa_deci(ssize_t arg, int len)
+char		*itoa_unsigned(unsigned long long arg, int len)
 {
 	char	*ret;
 
-	printf("%lld\n", arg);
-	if (!(ret = (char*)malloc(sizeof(char) * len)))
+	if (!(ret = (char*)malloc(sizeof(char) * len + 1)))
 		return (NULL);
-	if (arg == 
+	ret[len] = 0;
+	while (len)
+	{
+		ret[--len] = ft_abs(arg % 10) + '0';
+		arg /= 10;
+	}
+	return (ret);
+}
+
+char		*itoa_deci(long long arg, int len)
+{
+	char	*ret;
+
+	if (!(ret = (char*)malloc(sizeof(char) * len + 1)))
+		return (NULL);
+	ret[len] = 0;
 	while (len)
 	{
 		ret[--len] = ft_abs(arg % 10) + '0';
@@ -32,8 +46,9 @@ char		*itoa_octa(size_t arg, int len)
 {
 	char	*ret;
 
-	if (!(ret = (char*)malloc(sizeof(char) * len)))
+	if (!(ret = (char*)malloc(sizeof(char) * len + 1)))
 		return (NULL);
+	ret[len] = 0;
 	while (len)
 	{
 		ret[--len] = arg % 8 + '0';
@@ -74,25 +89,10 @@ char		*itoa_hexa(size_t arg, int len, char c)
 	cap = 0;
 	if (!(ret = (char*)malloc(sizeof(char) * len)))
 		return (NULL);
+	ret[len] = 0;
 	while (len)
 	{
 		ret[--len] = get_hex((arg % 16), c) + '0';
-		arg /= 16;
-	}
-	return (ret);
-}
-
-char		*itoa_cap_hexa(size_t arg, int len)
-{
-	char	*ret;
-	int		cap;
-
-	if (!(ret = (char*)malloc(sizeof(char) * len)))
-		return (NULL);
-	cap = 1;
-	while (len)
-	{
-		ret[--len] = get_hex((arg % 16), cap) + '0';
 		arg /= 16;
 	}
 	return (ret);
