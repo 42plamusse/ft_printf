@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 11:07:01 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 17:51:31 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/14 10:57:18 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void		stock_us(size_t arg, char *buf, t_size *sz, t_fwp *fwp)
 	if (df.wl)
 	{
 		if (fwp->fi & fl_mi)
-			idt_leftus(arg, &df, sz, fwp, buf);
+			idt_leftus(arg, &df, sz, buf);
 		else if (!(fwp->fi & fl_pr) && (fwp->fi & fl_ze))
-			idt_zerous(arg, &df, sz, fwp, buf);
+			idt_zerous(arg, &df, sz, buf);
 		else
-			idt_rightus(arg, &df, sz, fwp, buf);
+			idt_rightus(arg, &df, sz, buf);
 	}
 	else
-		idt_normlus(arg, &df, sz, fwp, buf);
+		idt_normlus(arg, &df, sz, buf);
 }

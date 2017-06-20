@@ -6,12 +6,11 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 11:05:59 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 17:34:04 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 12:55:05 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 ssize_t		arglen_si(ssize_t arg)
 {
@@ -30,7 +29,10 @@ void		init_df_si(t_dif *df, ssize_t arg, t_fwp *fwp)
 	int		sign;
 	int		totlen;
 
-	df->al = arglen_si(arg);
+	if (!(arg) && (fwp->fi & fl_pr) && !(fwp->pr))
+		df->al = 0;
+	else
+		df->al = arglen_si(arg);
 	if (!(sign = 0) && ((arg < 0 && (fwp->fi |= fl_ne)) || (fwp->fi & fl_pl)
 			|| (fwp->fi & fl_sp)))
 		sign = 1;

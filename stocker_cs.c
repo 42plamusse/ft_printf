@@ -6,30 +6,63 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 21:42:49 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 13:38:22 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/19 20:24:46 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
+
+void	init_df_s(t_dif *df, char *arg, t_fwp *fwp)
+{
+	df->al = ft_strlen(arg);
+	if (fwp->pr && df->al)
+		df->pl = fwp->pr;
+	else
+		df->pl = df->al;
+	df->wl = fwp->wi - df->pl;
+}
+
+int		putnull(char *buf, t_size *sz)
+{
+	char	ret[6];
+	int		i;
+
+	ret[0] = '(';
+	ret[1] = 'n';
+	ret[2] = 'u';
+	ret[3] = 'l';
+	ret[4] = 'l';
+	ret[5] = ')';
+	i = 0;
+	while (i < 6)
+	{
+		if (sz->no < BS)
+			buf[sz->no++] = ret[i++];
+		else if ((sz->op += sz->no) && !(sz->no = 0))
+			write(1, buf, BS);
+	}
+	return (1);
+}
+	
 void	stock_s(char *arg, char *buf, t_size *sz, t_fwp *fwp)
 {
-	int		len;
-	int		dif;
+	t_dif	df;
 
-	dif = fwp->wi - fwp->pr;
-	if ((len = ft_strlen(arg)) && dif < len)
+	if (arg == NULL && putnull(buf, sz))
+		return ;
+	init_df_s(&df, arg, fwp);
+	if (df.wl > 0)
 	{
 		if (fwp->fi & fl_mi)
-			idt_lefts(arg, len, sz, fwp, buf);
+			idt_lefts(arg, &df, sz, buf);
 		else if (fwp->fi & fl_ze)
-			idt_zeros(arg, len, sz, fwp, buf);
+			idt_zeros(arg, &df, sz, buf);
 		else
-			idt_rights(arg, len, sz, fwp, buf);
+			idt_rights(arg, &df, sz, buf);
 	}
 	else
-		idt_normls(arg, len, sz, fwp, buf);
+		idt_normls(arg, &df, sz, buf);
 }
 
 void	stock_c(unsigned char arg, char *buf, t_size *sz , t_fwp *fwp)

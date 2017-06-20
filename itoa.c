@@ -6,12 +6,11 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 17:13:17 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 19:13:52 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 14:03:50 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 char		*itoa_deci(size_t arg, int len)
 {
@@ -41,11 +40,11 @@ char		*itoa_octa(size_t arg, int len)
 	return (ret);
 }
 
-int			get_hex(int nb, int cap)
+int			get_hex(int nb, char c)
 {
 	int		ret;
 
-	if (!cap)
+	if (c == 'x')
 		ret = 49;
 	else
 		ret = 17;
@@ -65,7 +64,7 @@ int			get_hex(int nb, int cap)
 		return (nb);
 }
 
-char		*itoa_hexa(size_t arg, int len)
+char		*itoa_hexa(size_t arg, int len, char c)
 {
 	char	*ret;
 	int		cap;
@@ -75,7 +74,7 @@ char		*itoa_hexa(size_t arg, int len)
 		return (NULL);
 	while (len)
 	{
-		ret[--len] = get_hex((arg % 16), cap) + '0';
+		ret[--len] = get_hex((arg % 16), c) + '0';
 		arg /= 16;
 	}
 	return (ret);

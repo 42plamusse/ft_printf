@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 20:56:57 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 14:03:44 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-# define BS 1
+# define BS 2000
 # define NO_CONV 1
 # define CONV_SUCCEED 1
 
@@ -46,6 +46,8 @@ typedef struct		s_dif
 	int				al;
 	int				pl;
 	int				wl;
+	int				cp;
+	char			c;
 }					t_dif;
 /*
 ** enums
@@ -102,45 +104,52 @@ void				stock_si(ssize_t arg, char *buf, t_size *sz, t_fwp *fwp);
 void				stock_oux(ssize_t arg, char *buf, char c, t_size *sz, t_fwp *fwp);
 void				stock_us(size_t arg, char *buf, t_size *sz, t_fwp *fwp);
 void				stock_oc(size_t arg, char *buf, t_size *sz, t_fwp *fwp);
-void				stock_hx(size_t arg, char *buf, t_size *sz, t_fwp *fwp);
-void				stock_cap_hx(size_t arg, char *buf, t_size *sz, t_fwp *fwp);
+void				stock_hx(size_t arg, char *buf, char c, t_size *sz, t_fwp *fwp);
 /*
 ** indentation
 */
 void				fill_ze(char *buf, t_size *sz, int nsp);
 void				fill_sp(char *buf, t_size *sz, int nsp);
 void				putsign(t_size *sz, t_fwp *fwp, char *buf);
-void				put_hex_prfx(char *buf, t_size *sz, int cap);
+void				put_hex_prfx(char *buf, t_size *sz, char c);
 char				*itoa_deci(size_t arg, int len);
 char				*itoa_octa(size_t arg, int len);
-char				*itoa_hexa(size_t arg, int len);
+char				*itoa_hexa(size_t arg, int len, char c);
 char				*itoa_cap_hexa(size_t arg, int len);
-void				idt_normls(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_normls(char *arg, t_dif *df, t_size *sz, char *buf);
 void				idt_normlc(char arg, t_size *sz, char *buf);
 void				idt_normlsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_normlus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_normloc(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_normlhx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_normlus(size_t arg, t_dif *df, t_size *sz, char *buf);
+void				idt_normloc(size_t arg, t_dif *df, t_size *sz, char *buf);
+void				idt_normlhx(size_t arg, t_dif *df, t_size *sz, char c, char *buf);
 void				idt_norml_cap_hx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_rights(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_rights(char *arg, t_dif *df, t_size *sz, char *buf);
 void				idt_rightc(char arg, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_rightsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_rightus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_rightoc(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_righthx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_rightus(size_t arg, t_dif *df, t_size *sz, char *buf);
+void				idt_rightoc(size_t arg, t_dif *df, t_size *sz, char *buf);
+void				idt_righthx(size_t arg, t_dif *df, t_size *sz, char c, char *buf);
 void				idt_right_cap_hx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_zeros(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_zeros(char *arg, t_dif *df, t_size *sz, char *buf);
 void				idt_zeroc(char arg, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_zerosi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_zerous(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_zerooc(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_zerohx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_zerous(size_t arg, t_dif *df, t_size *sz, char *buf);
+void				idt_zerooc(size_t arg, t_dif *df, t_size *sz, char *buf);
+void				idt_zerohx(size_t arg, t_dif *df, t_size *sz, char c, char *buf);
 void				idt_zero_cap_hx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_lefts(char *arg, int len, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_lefts(char *arg, t_dif *df, t_size *sz, char *buf);
 void				idt_leftc(char arg, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_leftsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_leftus(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_leftoc(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
-void				idt_lefthx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
+void				idt_leftus(size_t arg, t_dif *df, t_size *sz, char *buf);
+void				idt_leftoc(size_t arg, t_dif *df, t_size *sz, char *buf);
+void				idt_lefthx(size_t arg, t_dif *df, t_size *sz, char c, char *buf);
 void				idt_left_cap_hx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
+/*
+** helpers
+*/
+void				init_size(t_size *sz);
+char				*ft_strchr(const char *s, int c);
+ssize_t				ft_abs(ssize_t n);
+int					ft_isdigit(int c);
+int					ft_strlen(char *str);
 #endif

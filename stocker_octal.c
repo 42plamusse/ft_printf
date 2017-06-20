@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 18:11:12 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 20:39:11 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 13:21:19 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ void		init_df_oc(t_dif *df, size_t arg, t_fwp *fwp)
 
 	if (!(pref = 0) && (fwp->fi & fl_ha))
 		pref = 1;
-	df->al = arglen_oc(arg) + pref;
+	if (!(arg) && (fwp->fi & fl_pr) && !(fwp->pr))
+		df->al = 0 + pref;
+	else
+		df->al = arglen_oc(arg) + pref;
 	if (fwp->pr > df->al && (totlen = fwp->pr))
 		df->pl = fwp->pr - df->al;
 	else if ((totlen = df->al))
@@ -50,12 +53,12 @@ void		stock_oc(size_t arg, char *buf, t_size *sz, t_fwp *fwp)
 	if (df.wl)
 	{
 		if (fwp->fi & fl_mi)
-			idt_leftoc(arg, &df, sz, fwp, buf);
+			idt_leftoc(arg, &df, sz, buf);
 		else if (!(fwp->fi & fl_pr) && (fwp->fi & fl_ze))
-			idt_zerooc(arg, &df, sz, fwp, buf);
+			idt_zerooc(arg, &df, sz, buf);
 		else
-			idt_rightoc(arg, &df, sz, fwp, buf);
+			idt_rightoc(arg, &df, sz, buf);
 	}
 	else
-		idt_normloc(arg, &df, sz, fwp, buf);
+		idt_normloc(arg, &df, sz, buf);
 }

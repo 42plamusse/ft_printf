@@ -6,12 +6,11 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 17:12:21 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 17:42:17 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/19 15:31:13 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	converter(va_list valist, char *buf, t_size *sz, const char c, t_fwp *fwp)
 {
@@ -24,7 +23,12 @@ int	converter(va_list valist, char *buf, t_size *sz, const char c, t_fwp *fwp)
 		return (1);
 	else if ((p = ft_strchr("sScC", c)) && conv_cs(valist, buf, sz, *p, fwp))
 		return (1);
-//	else if (c == 'p' && conv_pt(valist, buf, sz, *p, fwp))
-//		return (1);
+	//else if (c == 'p' && stock_pt(va_arg(valist, void*), buf, sz, fwp))
+	//	return (1);
+	else if (c == '%')
+	{
+		stock_c('%', buf, sz, fwp);
+		return (1);
+	}
 	return (0);
 }

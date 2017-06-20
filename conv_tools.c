@@ -6,12 +6,11 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 19:01:49 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 17:33:32 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/14 12:27:04 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int		conv_si(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
 {
@@ -75,10 +74,3 @@ int		conv_cs(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
 	}
 	return (CONV_SUCCEED);
 }
-
-
-//int		conv_pt(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
-//{
-//	stock_pt(va_arg(valist, void*), buf, sz, fwp);
-//	return (CONV_SUCCED);
-//}

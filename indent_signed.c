@@ -6,12 +6,11 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 10:48:57 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 17:54:43 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 12:58:00 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 void		idt_leftsi(ssize_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 {

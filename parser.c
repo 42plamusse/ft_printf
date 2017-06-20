@@ -6,12 +6,11 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 13:26:12 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 13:38:34 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/19 20:28:15 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int		parser(va_list valist, const char *format, char *buf, t_size *sz)
 {
@@ -21,13 +20,11 @@ int		parser(va_list valist, const char *format, char *buf, t_size *sz)
 
 	init_fwp(&fwp);
 	i = 1;
-	if (format[i] == '%' && (buf[sz->no++] = '%') && ++i)
-		return (i);
 	while (format[i] && (p = ft_strchr("#0-+ ", format[i])) && ++i)
 		iflags(p, &fwp);
 	while (format[i] && ft_isdigit(format[i]))
 		fwp.wi = fwp.wi * 10 + (format[i++] - '0');
-	if (format[i] && format[i] == '.' && (fwp.fi | fl_pr) && ++i)
+	if (format[i] && format[i] == '.' && (fwp.fi |= fl_pr) && ++i)
 	{
 		while (format[i] && ft_isdigit(format[i]))
 			fwp.pr = fwp.pr * 10 + (format[i++] - '0');
@@ -35,7 +32,6 @@ int		parser(va_list valist, const char *format, char *buf, t_size *sz)
 	while (format[i] && (p = ft_strchr("hljz", format[i])) && ++i)
 		cflag(p, &fwp, format + i);
 	if (format[i] && converter(valist, buf, sz, format[i], &fwp) && ++i)
-		return (i);
-	else
-		return (NO_CONV);
+		;
+	return (i);
 }

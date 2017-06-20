@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 18:39:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 20:59:39 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/14 13:37:30 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ void		init_df_cap_hx(t_dif *df, size_t arg, t_fwp *fwp)
 
 	if (!(pref = 0) && (fwp->fi & fl_ha))
 		pref = 2;
-	df->al = arglen_cap_hx(arg) + pref;
-	if (fwp->pr > df->al && (totlen = fwp->pr))
+	df->al = arglen_cap_hx(arg);
+	if (fwp->pr > df->al)
 		df->pl = fwp->pr - df->al;
-	else if ((totlen = df->al))
+	else
 		df->pl = 0;
+	totlen = df->al + df->pl + pref;
 	if (fwp->wi > totlen)
 		df->wl = fwp->wi - totlen;
 	else
@@ -46,6 +47,8 @@ void		stock_cap_hx(size_t arg, char *buf, t_size *sz, t_fwp *fwp)
 {
 	t_dif	df;
 
+	if ((fwp->fi & fl_pr) && !(fwp->pr))
+		return ;
 	init_df_cap_hx(&df, arg, fwp);
 	if (df.wl)
 	{

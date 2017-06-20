@@ -6,24 +6,22 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 18:44:59 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 21:14:16 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/20 14:04:36 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
-void		idt_lefthx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_lefthx(size_t arg, t_dif *df, t_size *sz, char c, char *buf)
 {
 	char	*stock;
 	int		i;
-	int		cap;
 
-	if ((fwp->fi & fl_ha) && !(cap = 0))
-		put_hex_prfx(buf, sz, cap);
+	if (df->cp)
+		put_hex_prfx(buf, sz, c);
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
-	stock = itoa_hexa(ft_abs(arg), df->al);
+	stock = itoa_hexa(arg, df->al, c);
 	i = 0;
 	while (stock[i])
 	{
@@ -36,26 +34,25 @@ void		idt_lefthx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 	fill_sp(buf, sz, df->wl);
 }
 
-void		idt_zerohx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_zerohx(size_t arg, t_dif *df, t_size *sz, char c, char *buf)
 {
 	char	*stock;
 	int		i;
-	int		cap;
 
 	if (df->pl)
 	{
 		fill_sp(buf, sz, df->wl);
-		if ((fwp->fi & fl_ha) && !(cap = 0))
-			put_hex_prfx(buf, sz, cap);
+		if (df->cp)
+			put_hex_prfx(buf, sz, c);
 		fill_ze(buf, sz, df->pl);
 	}
 	else
 	{
-		if ((fwp->fi & fl_ha) && !(cap = 0))
-			put_hex_prfx(buf, sz, cap);
+		if (df->cp)
+			put_hex_prfx(buf, sz, c);
 		fill_ze(buf, sz, df->wl);
 	}
-	stock = itoa_hexa(ft_abs(arg), df->al);
+	stock = itoa_hexa(arg, df->al, c);
 	i = 0;
 	while (stock[i])
 	{
@@ -68,18 +65,17 @@ void		idt_zerohx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 }
 
 
-void		idt_righthx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_righthx(size_t arg, t_dif *df, t_size *sz, char c, char *buf)
 {
 	char	*stock;
 	int		i;
-	int		cap;
 
 	fill_sp(buf, sz, df->wl);
-	if ((fwp->fi & fl_ha) && !(cap = 0))
-		put_hex_prfx(buf, sz, cap);
+	if (df->cp)
+		put_hex_prfx(buf, sz, c);
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
-	stock = itoa_hexa(ft_abs(arg), df->al);
+	stock = itoa_hexa(arg, df->al, c);
 	i = 0;
 	while (stock[i])
 	{
@@ -91,17 +87,16 @@ void		idt_righthx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 	free(stock);
 }
 
-void		idt_normlhx(size_t arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
+void		idt_normlhx(size_t arg, t_dif *df, t_size *sz, char c, char *buf)
 {
 	char	*stock;
 	int		i;
-	int		cap;
 
-	if ((fwp->fi & fl_ha) && !(cap = 0))
-		put_hex_prfx(buf, sz, cap);
+	if (df->cp)
+		put_hex_prfx(buf, sz, c);
 	if (df->pl)
 		fill_ze(buf, sz, df->pl);
-	stock = itoa_hexa(ft_abs(arg), df->al);
+	stock = itoa_hexa(arg, df->al, c);
 	i = 0;
 	while (stock[i])
 	{
