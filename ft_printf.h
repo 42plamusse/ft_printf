@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/20 21:12:17 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/21 13:15:03 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void				stock_oux(size_t arg, char *buf, char c, t_size *sz, t_fwp *fwp);
 void				stock_us(size_t arg, char *buf, t_size *sz, t_fwp *fwp);
 void				stock_oc(size_t arg, char *buf, t_size *sz, t_fwp *fwp);
 void				stock_hx(size_t arg, char *buf, char c, t_size *sz, t_fwp *fwp);
+int					stock_pt(void *arg, char *buf, char c, t_size *sz, t_fwp *fwp);
 /*
 ** indentation
 */
@@ -122,24 +123,28 @@ void				idt_normlsi(long long arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf)
 void				idt_normlus(size_t arg, t_dif *df, t_size *sz, char *buf);
 void				idt_normloc(size_t arg, t_dif *df, t_size *sz, char *buf);
 void				idt_normlhx(size_t arg, t_dif *df, t_size *sz, char c, char *buf);
+void				idt_normlpt(void *arg, t_dif *df, t_size *sz, char c, char *buf);
 void				idt_rights(char *arg, t_dif *df, t_size *sz, char *buf);
 void				idt_rightc(char arg, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_rightsi(long long arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_rightus(size_t arg, t_dif *df, t_size *sz, char *buf);
 void				idt_rightoc(size_t arg, t_dif *df, t_size *sz, char *buf);
 void				idt_righthx(size_t arg, t_dif *df, t_size *sz, char c, char *buf);
+void				idt_rightpt(void *arg, t_dif *df, t_size *sz, char c, char *buf);
 void				idt_zeros(char *arg, t_dif *df, t_size *sz, char *buf);
 void				idt_zeroc(char arg, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_zerosi(long long arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_zerous(size_t arg, t_dif *df, t_size *sz, char *buf);
 void				idt_zerooc(size_t arg, t_dif *df, t_size *sz, char *buf);
 void				idt_zerohx(size_t arg, t_dif *df, t_size *sz, char c, char *buf);
+void				idt_zeropt(void *arg, t_dif *df, t_size *sz, char c, char *buf);
 void				idt_lefts(char *arg, t_dif *df, t_size *sz, char *buf);
 void				idt_leftc(char arg, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_leftsi(long long arg, t_dif *df, t_size *sz, t_fwp *fwp, char *buf);
 void				idt_leftus(size_t arg, t_dif *df, t_size *sz, char *buf);
 void				idt_leftoc(size_t arg, t_dif *df, t_size *sz, char *buf);
 void				idt_lefthx(size_t arg, t_dif *df, t_size *sz, char c, char *buf);
+void				idt_leftpt(void *arg, t_dif *df, t_size *sz, char c, char *buf);
 /*
 ** helpers
 */
