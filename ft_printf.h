@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/21 13:15:03 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/21 15:50:31 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,12 @@ typedef enum		e_conv
 	fl_z  = 0X20,//	00100000
 	//m_cv = 0X3F,//	00111111
 }					t_conv;
+typedef enum		e_mask
+{
+	msk_1 = 0XFFFFFF80,
+	msk_2 = 0XFFFF0000,
+	msk_3 = 0XFF000000,
+}					t_mask;
 /*
 ** prototypes
 */
