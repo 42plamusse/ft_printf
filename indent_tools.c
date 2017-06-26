@@ -6,12 +6,34 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/11 22:02:15 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/21 15:39:26 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/26 17:23:46 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int		putnull(char *buf, t_size *sz)
+{
+	char	ret[6];
+	int		i;
+
+	ret[0] = '(';
+	ret[1] = 'n';
+	ret[2] = 'u';
+	ret[3] = 'l';
+	ret[4] = 'l';
+	ret[5] = ')';
+	i = 0;
+	while (i < 6)
+	{
+		if (sz->no < BS)
+			buf[sz->no++] = ret[i++];
+		else if ((sz->op += sz->no) && !(sz->no = 0))
+			write(1, buf, BS);
+	}
+	return (1);
+}
+	
 void		fill_ze(char *buf, t_size *sz, int nsp)
 {
 	int		i;

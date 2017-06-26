@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 17:13:17 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/21 13:14:56 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/26 22:49:10 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,8 @@ int			get_hex(int nb, char c)
 char		*itoa_hexa(size_t arg, int len, char c)
 {
 	char	*ret;
-	int		cap;
 
-	cap = 0;
-	if (!(ret = (char*)malloc(sizeof(char) * len)))
+	if (!(ret = (char*)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	ret[len] = 0;
 	while (len)

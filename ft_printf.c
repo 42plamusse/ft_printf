@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:17 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/13 17:34:31 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/26 15:22:46 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		ft_printf(const char *format, ...)
 	va_list		valist;
 	char		buf[BS];
 	t_size		sz;
+	static int	error = 0;
 
 	va_start(valist, format);
 	init_size(&sz);
@@ -32,5 +33,7 @@ int		ft_printf(const char *format, ...)
 	va_end(valist);
 	if (write(1, buf, sz.no))
 		sz.op += sz.no;
-	return (sz.op - sz.uc);
+	if ((sz.er == -1 || error == -1) && (error = -1))
+		return (error);
+	return (sz.op);
 }

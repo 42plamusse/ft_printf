@@ -6,7 +6,7 @@
 /*   By: plamusse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 20:09:50 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/21 15:50:31 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/26 21:50:50 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct		s_size
 {
 	int				no;
 	int				op;
-	int				uc;
+	int				er;
 }					t_size;
 
 typedef struct		s_fwp
@@ -47,38 +47,35 @@ typedef struct		s_dif
 	int				pl;
 	int				wl;
 	int				cp;
-	char			c;
 }					t_dif;
 /*
 ** enums
 */
 typedef enum		e_flags
 {
-	fl_ha = 0X01,//	00000001
-	fl_ze = 0X02,//	00000010
-	fl_mi = 0X04,//	00000100
-	fl_pl = 0X08,//	00001000
-	fl_sp = 0X10,//	00010000
+	fl_ha = 0X01,
+	fl_ze = 0X02,
+	fl_mi = 0X04,
+	fl_pl = 0X08,
+	fl_sp = 0X10,
 	fl_ne = 0X20,
 	fl_pr = 0X40,
-	//m_fl = 0X1F,//	00011111
 }					t_flags;
 
 typedef enum		e_conv
 {
-	fl_h  = 0X01,//	00000001
-	fl_hh = 0X02,//	00000010
-	fl_l  = 0X04,//	00000100
-	fl_ll = 0X08,//	00001000
-	fl_j  = 0X10,//	00010000
-	fl_z  = 0X20,//	00100000
-	//m_cv = 0X3F,//	00111111
+	fl_h = 0X01,
+	fl_hh = 0X02,
+	fl_l = 0X04,
+	fl_ll = 0X08,
+	fl_j = 0X10,
+	fl_z = 0X20,
 }					t_conv;
 typedef enum		e_mask
 {
-	msk_1 = 0XFFFFFF80,
-	msk_2 = 0XFFFF0000,
-	msk_3 = 0XFF000000,
+	msk_1 = 0X0000C080,
+	msk_2 = 0X00D08080,
+	msk_3 = 0XF0808080,
 }					t_mask;
 /*
 ** prototypes
@@ -104,8 +101,8 @@ int					conv_oux(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp);
 */
 void				stock_s(char *arg, char *buf, t_size *sz, t_fwp *fwp);
 void				stock_c(unsigned char arg, char *buf, t_size *sz, t_fwp *fwp);
-void				stock_S(wchar_t *arg, char *buf, t_size *sz, t_fwp *fwp);
-void				stock_C(wchar_t arg, char *buf, t_size *sz, t_fwp *fwp);
+void				stock_ws(wchar_t *arg, char *buf, t_size *sz, t_fwp *fwp);
+void				stock_wc(wchar_t arg, char *buf, t_size *sz, t_fwp *fwp);
 void				stock_si(long long arg, char *buf, t_size *sz, t_fwp *fwp);
 void				stock_oux(size_t arg, char *buf, char c, t_size *sz, t_fwp *fwp);
 void				stock_us(size_t arg, char *buf, t_size *sz, t_fwp *fwp);
@@ -115,6 +112,9 @@ int					stock_pt(void *arg, char *buf, char c, t_size *sz, t_fwp *fwp);
 /*
 ** indentation
 */
+void				fillbuffer(unsigned char c, t_size *sz, char *buf);
+void				ft_putwchar(wchar_t arg, t_size *sz, char *buf);
+int					putnull(char *buf, t_size *sz);
 void				fill_ze(char *buf, t_size *sz, int nsp);
 void				fill_sp(char *buf, t_size *sz, int nsp);
 void				putsign(t_size *sz, t_fwp *fwp, char *buf);

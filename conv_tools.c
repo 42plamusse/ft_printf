@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 19:01:49 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/21 15:27:29 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/26 18:53:17 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,16 @@ int		conv_cs(va_list valist, char *buf, t_size *sz, char c, t_fwp *fwp)
 	if (ft_strchr("sS", c))
 	{
 		if (c == 'S' || (fwp->fc & fl_l))
-		{
-			return (1);
-		//	stock_S(va_arg(valist, wchar_t*), buf, sz, fwp);
-		}
+			stock_ws((wchar_t*)va_arg(valist, wchar_t*), buf, sz, fwp);
 		else
-			stock_s(va_arg(valist, char*), buf, sz, fwp);
+			stock_s((char*)va_arg(valist, char*), buf, sz, fwp);
 	}
 	else
 	{
 		if (c == 'C' || (fwp->fc & fl_l))
-			stock_C((wchar_t)va_arg(valist, wchar_t), buf, sz, fwp);
+			stock_wc((wchar_t)va_arg(valist, wchar_t), buf, sz, fwp);
 		else
-			stock_c(va_arg(valist, int), buf, sz, fwp);
+			stock_c((char)va_arg(valist, int), buf, sz, fwp);
 	}
 	return (CONV_SUCCEED);
 }

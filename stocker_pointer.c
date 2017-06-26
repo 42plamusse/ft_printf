@@ -6,7 +6,7 @@
 /*   By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 11:07:37 by plamusse          #+#    #+#             */
-/*   Updated: 2017/06/21 15:04:06 by plamusse         ###   ########.fr       */
+/*   Updated: 2017/06/26 20:03:48 by plamusse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ void		init_df_pt(t_dif *df, void *arg, t_fwp *fwp)
 {
 	int		totlen;
 
-	if (arg)
-		df->cp = 2;
+	df->cp = 2;
 	if (!(arg) && (fwp->fi & fl_pr) && !(fwp->pr))
 		df->al = 0;
 	else
 		df->al = arglen_pt((size_t)arg);
-	df->pl = 0;
+	if (fwp->pr > df->al)
+		df->pl = fwp->pr - df->al;
+	else
+		df->pl = 0;
 	totlen = df->al + df->pl + df->cp;
 	if (fwp->wi > totlen)
 		df->wl = fwp->wi - totlen;
