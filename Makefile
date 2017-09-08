@@ -3,46 +3,73 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: plamusse <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: plamusse <plamusse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/05/18 15:07:40 by plamusse          #+#    #+#              #
-#    Updated: 2017/06/26 15:41:02 by plamusse         ###   ########.fr        #
+#    Created: 2017/08/17 14:39:22 by plamusse          #+#    #+#              #
+#    Updated: 2017/09/08 13:40:55 by plamusse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME		= libftprintf.a
 
-SRC = ft_printf.c parser.c parsing_tools.c converter.c conv_tools.c \
-	  stocker_cs.c indent_string.c indent_char.c helpers.c indent_tools.c \
-	  stocker_signed.c indent_signed.c itoa.c stocker_oux.c stocker_unsigned.c \
-	  indent_unsigned.c stocker_octal.c indent_octal.c stocker_hexa.c \
-	  indent_hexa.c stocker_pointer.c indent_point.c stocker_wcs.c \
-	  indent_wchar.c
+# directories
+SRC_DIR		= ./src
+INC_DIR		= ./includes
+OBJ_DIR		= ./obj
+LIB_DIR		= ./libft
 
+# src / obj files
 
-OBJ = $(patsubst %.c, %.o, $(SRC))
+SRC = ft_printf.c \
+	  parser.c \
+	  parsing_tools.c \
+	  converter.c \
+	  conv_tools.c \
+	  stocker_cs.c \
+	  helpers.c \
+	  indent_tools.c \
+	  indent_wchar.c \
+	  itoa.c \
+	  stocker_signed.c \
+	  stocker_oux.c \
+	  stocker_unsigned.c \
+	  stocker_octal.c \
+	  stocker_hexa.c \
+	  stocker_pointer.c \
+	  stocker_n.c \
+	  stocker_wcs.c
 
-CC = gcc
+OBJ			= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-CFLAGS = -Wall -Werror -Wextra
+# compiler and flags
+CC			= gcc
+CFLAGS		= -Wall -Werror -Wextra
+
+# libraries
+L_FT		= $(LIB_DIR)
+LIB_LNK		= -L $(L_FT) -lft
+LIB_INC		= $(L_FT)/includes
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(CFLAGS) -c $(SRC)
+$(OBJ_DIR):
+	mkdir -p $@
+
+$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c $(INC_DIR)/ft_printf.h $(LIB_INC)/libft.h
+	$(CC) $(CFLAGS)  -o $@ -c $< -I $(INC_DIR)
+
+$(NAME): $(OBJ_DIR) $(OBJ)
+	@$(MAKE) -C $(L_FT)
 	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	@$(MAKE) fclean -C $(L_FT)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 
-re: fclean all
-
-cc:
-	$(CC)  -c main.c $(SRC)
-	$(CC)  -o testf main.o $(OBJ) 
-
-cclean: fclean
-	rm -f testf
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all
